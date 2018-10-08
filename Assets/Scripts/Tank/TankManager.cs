@@ -23,7 +23,7 @@ public class TankManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject player;
-
+  
     private Transform startPosition;
 
     public Slider progressInfo;
@@ -38,6 +38,7 @@ public class TankManager : MonoBehaviour {
     public bool fullAmmo = false;
     public float ammoCount = 0f;
     public float maxAmmo = 20f;
+   
     
     
     public GameObject loadedAmmo;
@@ -79,7 +80,7 @@ public class TankManager : MonoBehaviour {
         {
             StartCoroutine(Progressing());
             progressInTank.value += progressSpeed;
-            fuel-= fuelDropSpeed;
+            fuel -= fuelDropSpeed;
         }
 
 	}
