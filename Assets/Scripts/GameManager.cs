@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Text endMission;
     
-    public float level = 1;
 
     public bool cleared = false;
 
@@ -33,18 +32,10 @@ public class GameManager : MonoBehaviour {
 
         if (tank.progressInfo.value >= 1000)
         {
-            if (level<3)
-            {
-                endMission.text = "LEVEL CLEARED!";
-                StartCoroutine(RestartLevel());
-                StartCoroutine(ClearScreen());
-            }
-            else if (level>=3)
-            {
+            
                 endMission.text = "MISSION CLEARED!";
-                level = 1;
                 StartCoroutine(ReturnToMainMenu());
-            }
+            
         }
 
         if (Input.GetButton("Cancel"))
@@ -55,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator ReturnToMainMenu()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Menu");
     }
 
@@ -67,7 +58,7 @@ public class GameManager : MonoBehaviour {
     }
     IEnumerator ClearScreen()
     {
-        endMission.text = "Level " + level.ToString();
+        endMission.text = "Engage";
         yield return new WaitForSeconds(2);
         endMission.text = "";
     }

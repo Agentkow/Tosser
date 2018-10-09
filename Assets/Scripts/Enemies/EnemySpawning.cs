@@ -22,14 +22,12 @@ public class EnemySpawning : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         currentTime -= 0.1f * Time.deltaTime;
-        if (manager.level>1)
-        {
+        
             if (currentTime <= 0)
             {
                 StartCoroutine(SpawnEnemy());
                 currentTime = time;
             }
-        }
         
 	}
 

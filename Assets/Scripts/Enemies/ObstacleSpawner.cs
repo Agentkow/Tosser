@@ -25,14 +25,12 @@ public class ObstacleSpawner : MonoBehaviour {
     void Update()
     {
         currentTime -= 1f * Time.deltaTime;
-        if (manager.level == 1 || manager.level == 3)
-        {
+        
             if (currentTime <= 0)
             {
                 StartCoroutine(SpawnEnemy());
                 currentTime = time;
             }
-        }
         
     }
 
