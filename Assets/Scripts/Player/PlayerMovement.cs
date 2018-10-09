@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
     void Update () {
 
         checkJump = Physics2D.Raycast(transform.position,transform.TransformDirection(Vector2.down),rayLength);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.down), Color.green, rayLength, false);
 
         if (checkJump)
         {
