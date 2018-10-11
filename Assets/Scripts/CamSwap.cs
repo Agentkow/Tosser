@@ -11,7 +11,7 @@ public class CamSwap : MonoBehaviour {
     private float inSize = 6f;
     private float outSize = 46f;
 
-    private float outPosition = 40f;
+    private float outPosition = 53.7f;
 
     private Transform camPos;
 

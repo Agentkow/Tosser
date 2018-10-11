@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1513127847500570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.38, y: 7.66, z: 0}
+  m_LocalPosition: {x: -9.38, y: 7.959999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,6 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwable: {fileID: 1309803516286184, guid: 53b910dec7ecb364d863ec833886c399, type: 2}
   spawnPoint: {fileID: 0}
+  buttonPressed: {fileID: 21300002, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
+  buttonReleased: {fileID: 21300000, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
   pressed: 0
 --- !u!212 &212699869311437028
 SpriteRenderer:

@@ -26,21 +26,21 @@ public class GameManager : MonoBehaviour {
 
         if (tank.health <= 0)
         {
-            endMission.text = "FAILED!";
+            endMission.text = "MISSION FAILED!";
             StartCoroutine(RestartLevel());
         }
 
-        if (tank.progressInfo.value >= 1000)
+        if (tank.progressInfo.value >= tank.progressInfo.maxValue)
         {
-            
-                endMission.text = "MISSION CLEARED!";
-                StartCoroutine(ReturnToMainMenu());
+            endMission.fontStyle = FontStyle.BoldAndItalic;
+            endMission.text = "MISSION CLEARED!";
+            StartCoroutine(ReturnToMainMenu());
             
         }
 
         if (Input.GetButton("Cancel"))
         {
-
+            SceneManager.LoadScene("Menu");
         }
     }
 
@@ -58,7 +58,8 @@ public class GameManager : MonoBehaviour {
     }
     IEnumerator ClearScreen()
     {
-        endMission.text = "Engage";
+        endMission.fontStyle = FontStyle.Bold;
+        endMission.text = "ENGAGE";
         yield return new WaitForSeconds(2);
         endMission.text = "";
     }
