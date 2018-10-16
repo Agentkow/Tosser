@@ -21,9 +21,14 @@ public class TurretControls : MonoBehaviour {
     private float minRotate = 80f;
     private float maxRotate = -40f;
     private float rotateZ;
-
     private float force = 100;
-    
+    //private float fireRate = 2;
+    //private bool canFire;
+
+    private bool isOnCooldown;
+    [SerializeField]
+    private float fireCooldownTime = 0.5f;
+
 
     void Update()
     {
@@ -71,13 +76,23 @@ public class TurretControls : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (tank.ammoCount != 0)
+            if (tank.ammoCount != 0 && !isOnCooldown)
             {
                 Rigidbody2D instance = Instantiate(firedAmmo, spawnPoint.gameObject.transform.position, spawnPoint.gameObject.transform.rotation);
                 instance.velocity = force * turret.transform.right;
                 tank.fullAmmo = false;
                 tank.ammoCount--;
+                isOnCooldown = true;
+                StartCoroutine(HandleCooldown(fireCooldownTime));
             }
         }
     }
+
+    IEnumerator HandleCooldown(float rate)
+    {
+        yield return new WaitForSeconds(rate);
+        isOnCooldown = false;
+    }
+
+    
 }

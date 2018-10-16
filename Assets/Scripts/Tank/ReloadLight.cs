@@ -8,20 +8,31 @@ public class ReloadLight : MonoBehaviour {
     [SerializeField]
     private TankManager tank;
 
-    private Color reloaded = Color.green;
-    private Color empty = Color.gray;
     [SerializeField]
     private Image img;
+
+    [SerializeField]
+    private GameObject lighting;
+
+    private Color reloaded = Color.green;
+    private Color empty = Color.gray;
+
+    private void Start()
+    {
+        lighting.gameObject.SetActive(false);
+    }
 
     void Update()
     {
         if (tank.fullAmmo)
         {
             img.color = reloaded;
+            lighting.gameObject.SetActive(true);
         }
         else if (tank.ammoCount == 0)
         {
             img.color = empty;
+            lighting.gameObject.SetActive(false);
         }
     }
 }

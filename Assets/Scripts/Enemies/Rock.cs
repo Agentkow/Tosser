@@ -8,6 +8,8 @@ public class Rock : MonoBehaviour {
 
     void Update()
     {
+
+
         if (rockHealth <= 0)
         {
             StartCoroutine(DestroyRock());
