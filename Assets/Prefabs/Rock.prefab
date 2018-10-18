@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockHealth: 5
+  playerPosition: {x: 0, y: 0, z: 0}
+  speed: 100
 --- !u!212 &212326671099268468
 SpriteRenderer:
   m_ObjectHideFlags: 1
