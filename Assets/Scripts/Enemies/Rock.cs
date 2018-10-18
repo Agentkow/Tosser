@@ -10,7 +10,7 @@ public class Rock : MonoBehaviour {
     private Vector3 playerPosition;
 
     [SerializeField]
-    private float speed = 3f;
+    private float speed = 20f;
 
     private Vector2 playerDir;
     private float xDiff;
