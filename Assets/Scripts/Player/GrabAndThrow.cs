@@ -20,7 +20,7 @@ public class GrabAndThrow : MonoBehaviour {
     [SerializeField]
     private float throwForce = 10f;
 
-    private Animator anim;
+    //private Animator anim;
 
     public LayerMask notGrabbed;
 
@@ -30,7 +30,7 @@ public class GrabAndThrow : MonoBehaviour {
 
     void Start()
     {
-        anim = GetComponent<Animator>();  
+        //anim = GetComponent<Animator>();  
     }
 
     // Update is called once per frame
