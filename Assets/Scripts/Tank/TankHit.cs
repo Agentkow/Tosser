@@ -11,7 +11,7 @@ public class TankHit : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Hostile")
         {
-            tank.health -= 33;
+            tank.health -= 13;
             collision.gameObject.SetActive(false);
         }
     }

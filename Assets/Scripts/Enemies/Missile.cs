@@ -16,7 +16,7 @@ public class Missile : MonoBehaviour {
     private float xDiff;
     private float yDiff;
     private float speed = 10000f;
-    private float missileHealth = 15f;
+    private float missileHealth = 10f;
 
     private Rigidbody2D rigBody;
 

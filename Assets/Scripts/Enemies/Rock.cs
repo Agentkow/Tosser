@@ -5,19 +5,12 @@ using UnityEngine;
 public class Rock : MonoBehaviour {
     [SerializeField]
     private float rockHealth = 20f;
-
+    
     [SerializeField]
-    private Vector3 playerPosition;
-
-    [SerializeField]
-    private float speed = -20f;
-
-    private Vector2 playerDir;
-    private float xDiff;
-    private float yDiff;
+    private float speed = 200f;
+    
     private Rigidbody2D rigBody;
     
-
     void Start()
     {
         rigBody = gameObject.GetComponent<Rigidbody2D>();
@@ -36,11 +29,7 @@ public class Rock : MonoBehaviour {
 
     private void TankTargeting()
     {
-        playerPosition = GameObject.Find("Tank").transform.position;
-        xDiff = playerPosition.x - transform.position.x;
-        yDiff = playerPosition.y - transform.position.y;
-        playerDir = new Vector2(xDiff, yDiff);
-        rigBody.AddForce(playerDir.normalized * speed * Time.deltaTime);
+        rigBody.AddForce(Vector2.left*speed,ForceMode2D.Impulse);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
