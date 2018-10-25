@@ -16,6 +16,9 @@ public class TurretControls : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody2D firedAmmo;
+
+    [SerializeField]
+    private AudioSource tankShot;
     
     private float rotateForce = 50f;
     private float minRotate = 80f;
@@ -80,6 +83,7 @@ public class TurretControls : MonoBehaviour {
             {
                 Rigidbody2D instance = Instantiate(firedAmmo, spawnPoint.gameObject.transform.position, spawnPoint.gameObject.transform.rotation);
                 instance.velocity = force * turret.transform.right;
+                tankShot.Play();
                 tank.fullAmmo = false;
                 tank.ammoCount--;
                 isOnCooldown = true;

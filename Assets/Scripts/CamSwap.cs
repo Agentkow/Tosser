@@ -22,10 +22,12 @@ public class CamSwap : MonoBehaviour {
     [SerializeField]
     private bool control = false;
 
+    private CameraShake camShake;
+
     void Start()
     {
         camPos = mainCam.transform;
-        
+        camShake = gameObject.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -41,12 +43,14 @@ public class CamSwap : MonoBehaviour {
                 {
                     mainCam.orthographicSize = inSize;
                     camPos.position = camPos.position - new Vector3(outPosition, 0, 0);
+                    camShake.mainCamPos = camPos.position;
                     control = false;
                 }
                 else
                 {
                     mainCam.orthographicSize = outSize;
                     camPos.position = camPos.position + new Vector3(outPosition, 0, 0);
+                    camShake.mainCamPos = camPos.position;
                     control = true;
                 }
             }
