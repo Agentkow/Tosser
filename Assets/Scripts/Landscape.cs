@@ -12,16 +12,17 @@ public class Landscape : MonoBehaviour {
 
     [SerializeField]
     private TankManager tank;
-
-   
+    
+  
     // Update is called once per frame
     void Update () {
 
-        if (tank.fuel!=0)
+        if (tank.canMove)
         {
             transform.Translate(Vector2.left * force * Time.deltaTime);
         }
         
+
     }
 
    

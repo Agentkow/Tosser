@@ -38,6 +38,7 @@ public class TankManager : MonoBehaviour {
     public bool fullAmmo = false;
     public float ammoCount = 0f;
     public float maxAmmo = 20f;
+    public bool canMove;
    
     
     
@@ -81,6 +82,11 @@ public class TankManager : MonoBehaviour {
             StartCoroutine(Progressing());
             progressInTank.value += progressSpeed;
             fuel -= fuelDropSpeed;
+            canMove = true;
+        }
+        else
+        {
+            canMove = false;
         }
 
 	}

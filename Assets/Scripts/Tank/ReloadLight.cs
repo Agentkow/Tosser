@@ -29,7 +29,7 @@ public class ReloadLight : MonoBehaviour {
             img.color = reloaded;
             lighting.gameObject.SetActive(true);
         }
-        else if (tank.ammoCount == 0)
+        else if (!tank.fullAmmo)
         {
             img.color = empty;
             lighting.gameObject.SetActive(false);

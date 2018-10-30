@@ -13,6 +13,8 @@ public class CamSwap : MonoBehaviour {
 
     private float outPosition = 53.7f;
 
+    private Vector3 inPos = new Vector3(0f,6.17f,-10f);
+    private Vector3 outPos = new Vector3(53.7f, 6.17f, -10f);
     private Transform camPos;
 
     [SerializeField]

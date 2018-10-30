@@ -9,9 +9,12 @@ public class Siren : MonoBehaviour {
     [SerializeField]
     private GameObject lighting;
 
+    private AudioSource sirenSound;
+
 	void Start () {
         sirenSprite = gameObject.GetComponent<SpriteRenderer>();
         sirenSprite.color = Color.grey;
+        sirenSound = gameObject.GetComponent<AudioSource>();
 	}
 
     void FixedUpdate()
@@ -20,6 +23,7 @@ public class Siren : MonoBehaviour {
         {
             sirenSprite.color = Color.grey;
             lighting.gameObject.SetActive(false);
+            sirenSound.Stop();
         }
     }
 
@@ -29,6 +33,7 @@ public class Siren : MonoBehaviour {
         {
             sirenSprite.color = Color.red;
             lighting.gameObject.SetActive(true);
+            sirenSound.Play();
         }
     }
 }

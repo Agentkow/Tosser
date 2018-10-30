@@ -10,10 +10,13 @@ public class Rock : MonoBehaviour {
     private float speed = 200f;
     
     private Rigidbody2D rigBody;
+
+    private AudioSource blastSound;
     
     void Start()
     {
         rigBody = gameObject.GetComponent<Rigidbody2D>();
+        blastSound = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -36,6 +39,7 @@ public class Rock : MonoBehaviour {
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
+            blastSound.Play();
             rockHealth -= 5f;
         }
     }

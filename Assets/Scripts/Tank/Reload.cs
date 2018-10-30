@@ -9,7 +9,13 @@ public class Reload : MonoBehaviour {
 
     [SerializeField]
     private GameObject ammotype1;
-    
+
+    private AudioSource ammoSound;
+
+    void Start()
+    {
+        ammoSound = gameObject.GetComponent<AudioSource>();
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +29,7 @@ public class Reload : MonoBehaviour {
                     {
                         tank.ammoCount += 5;
                         tank.loadedAmmo = ammotype1;
+                        ammoSound.Play();
                     }
                     Destroy(collision.gameObject);
                 }

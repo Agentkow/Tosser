@@ -26,7 +26,11 @@ public class SwapModes : MonoBehaviour {
     [SerializeField]
     private Slider progressBar;
 
-    
+    [SerializeField]
+    private AudioSource tankIn;
+
+    [SerializeField]
+    private AudioSource tankOut;
 
     private TurretControls turrets;
     private GrabAndThrow grabbing;
@@ -46,6 +50,7 @@ public class SwapModes : MonoBehaviour {
         turrets = player.GetComponent<TurretControls>();
         grabbing = player.GetComponent<GrabAndThrow>();
         playMove = player.GetComponent<PlayerMovement>();
+        tankIn.Play();
     }
 
     void Update()
@@ -85,6 +90,8 @@ public class SwapModes : MonoBehaviour {
                     ammoDisplay.enabled = false;
                     ammoText.enabled = false;
                     progressBar.gameObject.SetActive(false);
+                    tankIn.Play();
+                    tankOut.Stop();
                 }
                 else
                 {
@@ -96,6 +103,8 @@ public class SwapModes : MonoBehaviour {
                     ammoDisplay.enabled = true;
                     ammoText.enabled = true;
                     progressBar.gameObject.SetActive(true);
+                    tankOut.Play();
+                    tankIn.Stop();
                 }
             }
         }

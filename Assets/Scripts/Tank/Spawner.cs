@@ -16,6 +16,9 @@ public class Spawner : MonoBehaviour {
     [SerializeField]
     private Sprite buttonReleased;
 
+    [SerializeField]
+    private AudioSource dropSound;
+
     private SpriteRenderer currentSprite;
     private bool hasSpawned = false;
 
@@ -34,6 +37,7 @@ public class Spawner : MonoBehaviour {
             if (!hasSpawned)
             {
                 Instantiate(throwable, spawnPoint.gameObject.transform.position, spawnPoint.gameObject.transform.rotation);
+                dropSound.Play();
                 hasSpawned = true;
             }
         }
