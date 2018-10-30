@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
     [SerializeField]
     private ParticleSystem explosion;
 
+    [SerializeField]
     private AudioSource blastSound;
     private float lifeTime = 5f;
     public float damage = 5f;
@@ -14,7 +15,6 @@ public class Bullet : MonoBehaviour {
     void Start()
     {
         explosion.Stop();
-        blastSound = gameObject.GetComponent<AudioSource>();
         Destroy(gameObject, lifeTime);
     }
 

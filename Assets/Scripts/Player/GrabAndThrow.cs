@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GrabAndThrow : MonoBehaviour {
 
     public bool grabbed;
 
-    Collider2D hit;
+    public Collider2D hit;
 
     [SerializeField]
     private float distance = 5f;
@@ -19,18 +20,19 @@ public class GrabAndThrow : MonoBehaviour {
 
     [SerializeField]
     private float throwForce = 10f;
-
+    
     //private Animator anim;
 
     public LayerMask notGrabbed;
 
     public LayerMask items;
+
     [SerializeField]
     public float angle;
 
     void Start()
     {
-        //anim = GetComponent<Animator>();  
+        //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,7 +48,7 @@ public class GrabAndThrow : MonoBehaviour {
                 Physics2D.queriesStartInColliders = false;
 
                hit = Physics2D.OverlapCircle(grabPosition.position, distance, items);
-
+               
                 if (hit!=null && hit.tag == "GrabObject")
                 {
                     grabbed = true;
@@ -68,6 +70,7 @@ public class GrabAndThrow : MonoBehaviour {
             }
         }
 
+        //holds item to player
         if (grabbed)
         {
             hit.gameObject.transform.position = holdPoint.position;

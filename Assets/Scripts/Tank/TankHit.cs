@@ -10,12 +10,16 @@ public class TankHit : MonoBehaviour {
     [SerializeField]
     private CameraShake camShake;
 
+    [SerializeField]
+    private AudioSource hitSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Hostile")
         {
             tank.health -= 13;
             camShake.Shake(0.3f, 0.4f);
+            hitSound.Play();
             collision.gameObject.SetActive(false);
         }
     }
