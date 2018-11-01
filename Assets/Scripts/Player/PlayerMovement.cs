@@ -16,16 +16,16 @@ public class PlayerMovement : MonoBehaviour {
     private Animator anim;
 
     private Rigidbody2D rigBody;
-
-    private bool facingRight = true;
-
+    
     private RaycastHit2D checkJump;
 
+    private SpriteRenderer render;
     // Use this for initialization
     void Start () {
 
         rigBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
 	}
 
     void FixedUpdate()
@@ -36,10 +36,10 @@ public class PlayerMovement : MonoBehaviour {
 
         rigBody.velocity = new Vector2(move * moveSpeed, rigBody.velocity.y);
 
-        if (move > 0 && !facingRight)
-            Flip();
-        else if (move < 0 && facingRight)
-            Flip();
+        if (move > 0 )
+            render.flipX = false;
+        else if (move < 0 )
+            render.flipX = true;
 
 
     }
@@ -62,13 +62,6 @@ public class PlayerMovement : MonoBehaviour {
         }
         
 
-    }
-    void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
     }
     
     

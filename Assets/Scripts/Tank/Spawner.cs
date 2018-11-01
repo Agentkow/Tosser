@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour {
         {
             if (!hasSpawned)
             {
-                Instantiate(throwable, spawnPoint.gameObject.transform.position, spawnPoint.gameObject.transform.rotation);
+                Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0,0.3f,0), spawnPoint.gameObject.transform.rotation);
                 dropSound.Play();
                 hasSpawned = true;
             }

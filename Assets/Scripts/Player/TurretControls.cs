@@ -55,12 +55,12 @@ public class TurretControls : MonoBehaviour {
             rotateZ = maxRotate;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W))
         {
             rotateZ += Time.deltaTime * rotateForce;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
         {
             rotateZ += Time.deltaTime * -rotateForce;
         }
