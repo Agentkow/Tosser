@@ -9,12 +9,20 @@ public class Bullet : MonoBehaviour {
 
     [SerializeField]
     private AudioSource blastSound;
-    private float lifeTime = 5f;
+
+    [SerializeField]
+    private SpriteRenderer render;
+
+    [SerializeField]
+    private TrailRenderer trail;
+    private float lifeTime = 10f;
     public float damage = 5f;
 
     void Start()
     {
         explosion.Stop();
+        render = gameObject.GetComponent<SpriteRenderer>();
+         
         Destroy(gameObject, lifeTime);
     }
 
@@ -23,13 +31,15 @@ public class Bullet : MonoBehaviour {
         explosion.transform.parent = null;
         explosion.Play();
         blastSound.Play();
-        Destroy(explosion.gameObject, 0.3f);
-        gameObject.SetActive(false);
+        render.enabled = false;
+        Destroy(trail);
+        StartCoroutine(DestroyBullet());
     }
 
     IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(blastSound.clip.length);
+        Destroy(explosion.gameObject, 0.3f);
         Destroy(gameObject);
     }
     

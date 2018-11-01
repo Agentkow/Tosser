@@ -152,7 +152,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: b436f1f97bf8802448f3eba247d2cde5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -339,6 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 198069689268751648}
   blastSound: {fileID: 82774806713053108}
+  render: {fileID: 0}
+  trail: {fileID: 96144866987441306}
   damage: 5
 --- !u!198 &198069689268751648
 ParticleSystem:
