@@ -340,8 +340,10 @@ MonoBehaviour:
   explosion: {fileID: 198069689268751648}
   blastSound: {fileID: 82774806713053108}
   render: {fileID: 0}
+  colliderBullet: {fileID: 70529346843542692}
   trail: {fileID: 96144866987441306}
   damage: 5
+  destroyed: 0
 --- !u!198 &198069689268751648
 ParticleSystem:
   m_ObjectHideFlags: 1

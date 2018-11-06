@@ -14,9 +14,13 @@ public class Bullet : MonoBehaviour {
     private SpriteRenderer render;
 
     [SerializeField]
+    private CapsuleCollider2D colliderBullet;
+
+    [SerializeField]
     private TrailRenderer trail;
     private float lifeTime = 10f;
     public float damage = 5f;
+    public bool destroyed = false;
 
     void Start()
     {
@@ -32,15 +36,11 @@ public class Bullet : MonoBehaviour {
         explosion.Play();
         blastSound.Play();
         render.enabled = false;
+        colliderBullet.enabled = false;
         Destroy(trail);
-        StartCoroutine(DestroyBullet());
-    }
-
-    IEnumerator DestroyBullet()
-    {
-        yield return new WaitForSeconds(blastSound.clip.length);
-        Destroy(explosion.gameObject, 0.3f);
-        Destroy(gameObject);
+        Destroy(gameObject, blastSound.clip.length);
+        Destroy(explosion.gameObject, blastSound.clip.length);
+        
     }
     
 }

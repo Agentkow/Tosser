@@ -23,6 +23,9 @@ public class TankManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private Text ammoDisplay;
   
     private Transform startPosition;
 
@@ -32,7 +35,7 @@ public class TankManager : MonoBehaviour {
     private float maxFuel = 100;
 
     public float health = 100;
-    private float fuelDropSpeed = 0.03f;
+    private float fuelDropSpeed = 0.05f;
     public float progressSpeed = 0.1f;
 
     public bool fullAmmo = false;
@@ -66,6 +69,7 @@ public class TankManager : MonoBehaviour {
 
         healthPercentage.text = health.ToString("000") + "%";
         fuelGauge.text = Mathf.RoundToInt(fuel).ToString("000");
+        ammoDisplay.text = ammoCount.ToString();
 
         if (ammoCount>=maxAmmo)
         {

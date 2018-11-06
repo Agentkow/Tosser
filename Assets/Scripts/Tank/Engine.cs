@@ -10,6 +10,9 @@ public class Engine : MonoBehaviour {
     [SerializeField]
     private CameraShake camShake;
 
+    [SerializeField]
+    private SwapModes swap;
+
     private AudioSource oilSound;
 
     void Start()
@@ -24,6 +27,16 @@ public class Engine : MonoBehaviour {
             if (collision.gameObject.name == "Fuel(Clone)")
             {
                 tank.fuel += 100;
+
+                if (swap.currentAudio == swap.tankIn)
+                {
+                    swap.tankIn.Play();
+                }
+                else if (swap.currentAudio == swap.tankOut)
+                {
+                    swap.tankOut.Play();
+                }
+
                 oilSound.Play();
             }
             else

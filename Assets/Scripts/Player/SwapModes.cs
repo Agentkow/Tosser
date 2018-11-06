@@ -27,14 +27,15 @@ public class SwapModes : MonoBehaviour {
     private Slider progressBar;
 
     [SerializeField]
-    private AudioSource tankIn;
+    public AudioSource tankIn;
 
     [SerializeField]
-    private AudioSource tankOut;
+    public AudioSource tankOut;
 
     private TurretControls turrets;
     private GrabAndThrow grabbing;
     private PlayerMovement playMove;
+    public AudioSource currentAudio;
     
     public bool collided = false;
 
@@ -50,28 +51,41 @@ public class SwapModes : MonoBehaviour {
         turrets = player.GetComponent<TurretControls>();
         grabbing = player.GetComponent<GrabAndThrow>();
         playMove = player.GetComponent<PlayerMovement>();
+        currentAudio = tankIn;
         tankIn.Play();
     }
 
     void Update()
     {
         SwapControls();
+        
         progressBar.value = tank.progressInfo.value;
     }
 
     void FixedUpdate()
     {
-        if (tank.fuel <30)
+        TankFuelLightColor();
+
+        if (tank.fuel <=0)
+        {
+            tankOut.Stop();
+            tankIn.Stop();
+        }
+
+        ammoText.text = tank.ammoCount.ToString("00");
+
+    }
+
+    private void TankFuelLightColor()
+    {
+        if (tank.fuel < 30)
         {
             fuelLight.color = Color.red;
         }
         else
         {
-            fuelLight.color = Color.black;
+            fuelLight.color = Color.green;
         }
-
-        ammoText.text = tank.ammoCount.ToString("00");
-        
     }
 
     private void SwapControls()
@@ -90,8 +104,12 @@ public class SwapModes : MonoBehaviour {
                     ammoDisplay.enabled = false;
                     ammoText.enabled = false;
                     progressBar.gameObject.SetActive(false);
-                    tankIn.Play();
-                    tankOut.Stop();
+                    currentAudio = tankIn;
+                    if (tank.canMove)
+                    {
+                        tankIn.Play();
+                        tankOut.Stop();
+                    }
                 }
                 else
                 {
@@ -103,8 +121,12 @@ public class SwapModes : MonoBehaviour {
                     ammoDisplay.enabled = true;
                     ammoText.enabled = true;
                     progressBar.gameObject.SetActive(true);
-                    tankOut.Play();
-                    tankIn.Stop();
+                    currentAudio = tankOut;
+                    if (tank.canMove)
+                    {
+                        tankIn.Stop();
+                        tankOut.Play();
+                    }
                 }
             }
         }

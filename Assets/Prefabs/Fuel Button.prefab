@@ -82,6 +82,10 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   buttonPressed: {fileID: 21300002, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
   buttonReleased: {fileID: 21300000, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
+  chuteOpen: {fileID: 21300000, guid: c764c7ba29795054285167a2d826e30c, type: 3}
+  chuteClose: {fileID: 21300000, guid: 0d4e3c75e2ad8ab4193914eb87b8c74b, type: 3}
+  dropSound: {fileID: 0}
+  chuteSprite: {fileID: 0}
   pressed: 0
 --- !u!212 &212699869311437028
 SpriteRenderer:

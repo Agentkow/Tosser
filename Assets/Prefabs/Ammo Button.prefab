@@ -82,6 +82,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   buttonPressed: {fileID: 21300002, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
   buttonReleased: {fileID: 21300000, guid: e71bd9861b7d47e48a5b7e77f778d627, type: 3}
+  dropSound: {fileID: 0}
   pressed: 0
 --- !u!212 &212406928646619692
 SpriteRenderer:

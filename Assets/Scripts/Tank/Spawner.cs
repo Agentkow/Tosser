@@ -12,12 +12,19 @@ public class Spawner : MonoBehaviour {
 
     [SerializeField]
     private Sprite buttonPressed;
-
     [SerializeField]
     private Sprite buttonReleased;
 
     [SerializeField]
+    private Sprite chuteOpen;
+    [SerializeField]
+    private Sprite chuteClose;
+
+    [SerializeField]
     private AudioSource dropSound;
+
+    [SerializeField]
+    private SpriteRenderer chuteSprite;
 
     private SpriteRenderer currentSprite;
     private bool hasSpawned = false;
@@ -51,12 +58,14 @@ public class Spawner : MonoBehaviour {
     {
         pressed = true;
         currentSprite.sprite = buttonPressed;
+        chuteSprite.sprite = chuteOpen;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         pressed = false;
         currentSprite.sprite = buttonReleased;
+        chuteSprite.sprite = chuteClose;
     }
 
 
