@@ -36,6 +36,7 @@ public class SwapModes : MonoBehaviour {
     private GrabAndThrow grabbing;
     private PlayerMovement playMove;
     public AudioSource currentAudio;
+    private Rigidbody2D playerRigBody;
     
     public bool collided = false;
 
@@ -51,6 +52,7 @@ public class SwapModes : MonoBehaviour {
         turrets = player.GetComponent<TurretControls>();
         grabbing = player.GetComponent<GrabAndThrow>();
         playMove = player.GetComponent<PlayerMovement>();
+        playerRigBody = player.GetComponent<Rigidbody2D>();
         currentAudio = tankIn;
         tankIn.Play();
     }
@@ -105,6 +107,7 @@ public class SwapModes : MonoBehaviour {
                     ammoText.enabled = false;
                     progressBar.gameObject.SetActive(false);
                     currentAudio = tankIn;
+                    playerRigBody.isKinematic = true;
                     if (tank.canMove)
                     {
                         tankIn.Play();
@@ -122,6 +125,7 @@ public class SwapModes : MonoBehaviour {
                     ammoText.enabled = true;
                     progressBar.gameObject.SetActive(true);
                     currentAudio = tankOut;
+                    playerRigBody.isKinematic = false;
                     if (tank.canMove)
                     {
                         tankIn.Stop();

@@ -2113,6 +2113,11 @@ Prefab:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61771185271380112, guid: fc2eab888cd80a545912b8d6252987b1,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 3.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc2eab888cd80a545912b8d6252987b1, type: 2}
   m_IsPrefabParent: 0
@@ -7290,7 +7295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 391.4, y: 165.8}
+  m_AnchoredPosition: {x: 391.4, y: 254}
   m_SizeDelta: {x: 250.80005, y: 153.79987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1115389633

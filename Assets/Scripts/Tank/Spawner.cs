@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,11 +26,14 @@ public class Spawner : MonoBehaviour {
 
     [SerializeField]
     private SpriteRenderer chuteSprite;
-
+    
     private SpriteRenderer currentSprite;
     private bool hasSpawned = false;
+    private bool neverSpawned = true;
 
     public bool pressed;
+
+    public static event Action FirstFuelSpawned;
 
     void Start()
     {
@@ -45,6 +49,15 @@ public class Spawner : MonoBehaviour {
             {
                 Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0,0.3f,0), spawnPoint.gameObject.transform.rotation);
                 dropSound.Play();
+                if (neverSpawned)
+                {
+                    if (FirstFuelSpawned != null && throwable.name == "Fuel")
+                    {
+                        FirstFuelSpawned.Invoke();
+                    }
+                    neverSpawned = false;
+                }
+                
                 hasSpawned = true;
             }
         }
