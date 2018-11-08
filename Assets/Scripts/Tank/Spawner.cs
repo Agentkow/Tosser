@@ -49,6 +49,7 @@ public class Spawner : MonoBehaviour {
             {
                 Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0,0.3f,0), spawnPoint.gameObject.transform.rotation);
                 dropSound.Play();
+
                 if (neverSpawned)
                 {
                     if (FirstFuelSpawned != null && throwable.name == "Fuel")

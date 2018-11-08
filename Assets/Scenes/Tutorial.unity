@@ -963,6 +963,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 3.28
       objectReference: {fileID: 0}
+    - target: {fileID: 114381018043553582, guid: fc2eab888cd80a545912b8d6252987b1,
+        type: 2}
+      propertyPath: tankBody
+      value: 
+      objectReference: {fileID: 1562908790}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc2eab888cd80a545912b8d6252987b1, type: 2}
   m_IsPrefabParent: 0
@@ -1323,7 +1328,6 @@ GameObject:
   - component: {fileID: 357808498}
   - component: {fileID: 357808497}
   - component: {fileID: 357808496}
-  - component: {fileID: 357808499}
   m_Layer: 0
   m_Name: Tutorial Arrow (1)
   m_TagString: Untagged
@@ -1407,17 +1411,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &357808499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 357808495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23373ff5a8ccaf4eb6caf8041a463c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &359537135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2551,6 @@ GameObject:
   - component: {fileID: 485418554}
   - component: {fileID: 485418553}
   - component: {fileID: 485418552}
-  - component: {fileID: 485418555}
   m_Layer: 0
   m_Name: Tutorial Arrow (2)
   m_TagString: Untagged
@@ -2642,17 +2634,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &485418555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 485418551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23373ff5a8ccaf4eb6caf8041a463c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &543465675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,6 +5687,10 @@ MonoBehaviour:
   frontText: {fileID: 2137670801}
   tank: {fileID: 178220587}
   fuelSpawnArrow: {fileID: 944968532}
+  fuelDropArrow: {fileID: 1597322525}
+  ammoSpawnArrow: {fileID: 485418551}
+  ammoDropArrow: {fileID: 357808495}
+  controlPanelArrow: {fileID: 1323838643}
 --- !u!1 &816732576
 GameObject:
   m_ObjectHideFlags: 0
@@ -6357,7 +6342,6 @@ GameObject:
   - component: {fileID: 944968535}
   - component: {fileID: 944968534}
   - component: {fileID: 944968533}
-  - component: {fileID: 944968536}
   m_Layer: 0
   m_Name: 'Tutorial Arrow '
   m_TagString: Untagged
@@ -6441,17 +6425,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &944968536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 944968532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23373ff5a8ccaf4eb6caf8041a463c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1002250299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7526,7 +7499,6 @@ GameObject:
   - component: {fileID: 1323838646}
   - component: {fileID: 1323838645}
   - component: {fileID: 1323838644}
-  - component: {fileID: 1323838647}
   m_Layer: 0
   m_Name: Tutorial Arrow (4)
   m_TagString: Untagged
@@ -7610,17 +7582,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1323838647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1323838643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23373ff5a8ccaf4eb6caf8041a463c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1340153860
 GameObject:
   m_ObjectHideFlags: 0
@@ -7727,7 +7688,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1340153860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.17, z: -10}
+  m_LocalPosition: {x: 0, y: 6.33, z: -10}
   m_LocalScale: {x: 0.73, y: 0.72999996, z: 0.72999996}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8709,7 +8670,6 @@ GameObject:
   - component: {fileID: 1597322528}
   - component: {fileID: 1597322527}
   - component: {fileID: 1597322526}
-  - component: {fileID: 1597322529}
   m_Layer: 0
   m_Name: Tutorial Arrow (3)
   m_TagString: Untagged
@@ -8793,17 +8753,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597322529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1597322525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23373ff5a8ccaf4eb6caf8041a463c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1602005813
 GameObject:
   m_ObjectHideFlags: 0

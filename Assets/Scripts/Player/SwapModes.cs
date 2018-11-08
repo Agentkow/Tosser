@@ -32,6 +32,9 @@ public class SwapModes : MonoBehaviour {
     [SerializeField]
     public AudioSource tankOut;
 
+    [SerializeField]
+    private SpriteRenderer tankBody;
+
     private TurretControls turrets;
     private GrabAndThrow grabbing;
     private PlayerMovement playMove;
@@ -54,6 +57,7 @@ public class SwapModes : MonoBehaviour {
         playMove = player.GetComponent<PlayerMovement>();
         playerRigBody = player.GetComponent<Rigidbody2D>();
         currentAudio = tankIn;
+        tankBody.enabled = false;
         tankIn.Play();
     }
 
@@ -108,6 +112,7 @@ public class SwapModes : MonoBehaviour {
                     progressBar.gameObject.SetActive(false);
                     currentAudio = tankIn;
                     playerRigBody.isKinematic = true;
+                    tankBody.enabled = false;
                     if (tank.canMove)
                     {
                         tankIn.Play();
@@ -126,6 +131,7 @@ public class SwapModes : MonoBehaviour {
                     progressBar.gameObject.SetActive(true);
                     currentAudio = tankOut;
                     playerRigBody.isKinematic = false;
+                    tankBody.enabled = true;
                     if (tank.canMove)
                     {
                         tankIn.Stop();

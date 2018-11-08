@@ -14,10 +14,18 @@ public class TutorialManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject fuelSpawnArrow;
+    [SerializeField]
+    private GameObject fuelDropArrow;
+    [SerializeField]
+    private GameObject ammoSpawnArrow;
+    [SerializeField]
+    private GameObject ammoDropArrow;
+    [SerializeField]
+    private GameObject controlPanelArrow;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         tank.fuel = 0;
         frontText.text = "";
 
