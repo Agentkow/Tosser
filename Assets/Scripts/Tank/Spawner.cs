@@ -29,11 +29,13 @@ public class Spawner : MonoBehaviour {
     
     private SpriteRenderer currentSprite;
     private bool hasSpawned = false;
-    private bool neverSpawned = true;
+    private bool neverSpawnedFuel = true;
+    private bool neverSpawnedAmmo = true;
 
     public bool pressed;
 
     public static event Action FirstFuelSpawned;
+    public static event Action FirstAmmoSpawned;
 
     void Start()
     {
@@ -41,24 +43,22 @@ public class Spawner : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        
+    void Update ()
+    {
+        SpawnThrowableItem();
+    }
+
+    private void SpawnThrowableItem()
+    {
         if (pressed)
         {
             if (!hasSpawned)
             {
-                Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0,0.3f,0), spawnPoint.gameObject.transform.rotation);
+                Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0, 0.3f, 0), spawnPoint.gameObject.transform.rotation);
                 dropSound.Play();
 
-                if (neverSpawned)
-                {
-                    if (FirstFuelSpawned != null && throwable.name == "Fuel")
-                    {
-                        FirstFuelSpawned.Invoke();
-                    }
-                    neverSpawned = false;
-                }
-                
+                FirstFuelSpawn();
+
                 hasSpawned = true;
             }
         }
@@ -66,7 +66,19 @@ public class Spawner : MonoBehaviour {
         {
             hasSpawned = false;
         }
-	}
+    }
+
+    private void FirstFuelSpawn()
+    {
+        if (neverSpawnedFuel)
+        {
+            if (FirstFuelSpawned != null && throwable.name == "Fuel")
+            {
+                FirstFuelSpawned.Invoke();
+            }
+            neverSpawnedFuel = false;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

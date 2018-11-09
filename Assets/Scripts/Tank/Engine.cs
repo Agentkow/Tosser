@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Engine : MonoBehaviour {
 
@@ -14,6 +15,10 @@ public class Engine : MonoBehaviour {
     private SwapModes swap;
 
     private AudioSource oilSound;
+
+    private bool neverDestroyed = true;
+
+    public static event Action FirstFuelDestroyed;
 
     void Start()
     {
@@ -37,11 +42,20 @@ public class Engine : MonoBehaviour {
                     swap.tankOut.Play();
                 }
 
+                if (neverDestroyed)
+                {
+                    if (FirstFuelDestroyed != null)
+                    {
+                        FirstFuelDestroyed.Invoke();
+                    }
+                    neverDestroyed = false;
+                }
+
                 oilSound.Play();
             }
             else
             {
-                camShake.Shake(0.3f, 0.4f);
+                camShake.Shake(0.2f, 0.3f);
                 tank.health -= 5;
             }
             Destroy(collision.gameObject);

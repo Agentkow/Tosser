@@ -38,14 +38,63 @@ public class TutorialManager : MonoBehaviour {
         fuelSpawnArrow.SetActive(false);
     }
 
+    private void OnFirstFuelDestroyed()
+    {
+        fuelDropArrow.SetActive(false);
+    }
+
+    private void OnFirstAmmoSpawned()
+    {
+        ammoSpawnArrow.SetActive(false);
+    }
+
     private void OnEnable()
     {
+
         Spawner.FirstFuelSpawned += OnFirstFuelSpawned;
+
+        if (fuelSpawnArrow.activeSelf == false)
+        {
+            Engine.FirstFuelDestroyed += OnFirstFuelDestroyed;
+        }
+
+        if (fuelDropArrow.activeSelf == false)
+        {
+            Spawner.FirstAmmoSpawned += OnFirstAmmoSpawned;
+        }
+        if (true)
+        {
+
+        }
+        if (true)
+        {
+
+        }
+
     }
 
     private void OnDisable()
     {
+
         Spawner.FirstFuelSpawned -= OnFirstFuelSpawned;
+
+        if (fuelSpawnArrow.activeSelf == false)
+        {
+            fuelDropArrow.SetActive(true);
+        }
+        if (true)
+        {
+
+        }
+        if (true)
+        {
+
+        }
+        if (true)
+        {
+
+        }
+
     }
     // Update is called once per frame
     void Update () {
