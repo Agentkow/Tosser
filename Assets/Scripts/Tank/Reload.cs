@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Reload : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class Reload : MonoBehaviour {
     private GameObject ammotype1;
 
     private AudioSource ammoSound;
+    private bool neverLoaded = true;
+
+    public static event Action FirstAmmoDestroyed;
 
     void Start()
     {
@@ -30,6 +34,15 @@ public class Reload : MonoBehaviour {
                         tank.ammoCount += 5;
                         tank.loadedAmmo = ammotype1;
                         ammoSound.Play();
+
+                        if (neverLoaded)
+                        {
+                            if (FirstAmmoDestroyed != null)
+                            {
+                                FirstAmmoDestroyed.Invoke();
+                            }
+                            neverLoaded = false;
+                        }
                     }
                     Destroy(collision.gameObject);
                 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class SwapModes : MonoBehaviour {
 
@@ -42,10 +43,13 @@ public class SwapModes : MonoBehaviour {
     private Rigidbody2D playerRigBody;
     
     public bool collided = false;
+    private bool haventTouched = true;
 
     [SerializeField]
     private Image fuelLight;
-    
+
+    public static event Action FirstControlContact;
+
     // Use this for initialization
     void Start () {
         fuelLight.enabled = false;
@@ -102,16 +106,18 @@ public class SwapModes : MonoBehaviour {
             {
                 if (inTank)
                 {
+                    turrets.enabled = false;
                     grabbing.enabled = true;
                     playMove.enabled = true;
-                    turrets.enabled = false;
                     inTank = false;
                     fuelLight.enabled = false;
                     ammoDisplay.enabled = false;
                     ammoText.enabled = false;
                     progressBar.gameObject.SetActive(false);
+                    playerRigBody.constraints = RigidbodyConstraints2D.None;
+                    playerRigBody.constraints = RigidbodyConstraints2D.FreezeRotation;
                     currentAudio = tankIn;
-                    playerRigBody.isKinematic = true;
+                    
                     tankBody.enabled = false;
                     if (tank.canMove)
                     {
@@ -130,8 +136,19 @@ public class SwapModes : MonoBehaviour {
                     ammoText.enabled = true;
                     progressBar.gameObject.SetActive(true);
                     currentAudio = tankOut;
-                    playerRigBody.isKinematic = false;
+                    playerRigBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+                    
                     tankBody.enabled = true;
+
+                    if (haventTouched)
+                    {
+                        if (FirstControlContact != null)
+                        {
+                            FirstControlContact.Invoke();
+                        }
+                        haventTouched = false;
+                    }
+
                     if (tank.canMove)
                     {
                         tankIn.Stop();

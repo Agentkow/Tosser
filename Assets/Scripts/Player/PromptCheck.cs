@@ -6,30 +6,39 @@ using UnityEngine.UI;
 public class PromptCheck : MonoBehaviour {
 
     [SerializeField]
-    private Text tutorialPrompt;
+    private GameObject tutorialPrompt;
 
+    [SerializeField]
+    private Animator animate;
+    
     [SerializeField]
     private GrabAndThrow grabCode;
 
+    public bool grabbable;
+    public bool interactable;
+
     void Start()
     {
-        tutorialPrompt.text = "";
+        grabbable = false;
+        interactable = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "GrabObject" && !grabCode.grabbed)
         {
-            tutorialPrompt.text = "L Mouse to grab";
+            grabbable = true;
         }
-        else if (collision.gameObject.tag == "GunControls")
+
+        if (collision.gameObject.tag == "GunControls")
         {
-            tutorialPrompt.text = "E to Interact";
+            interactable = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        tutorialPrompt.text = "";
+        grabbable = false;
+        interactable = false;
     }
 }

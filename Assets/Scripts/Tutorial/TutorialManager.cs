@@ -13,15 +13,39 @@ public class TutorialManager : MonoBehaviour {
     private TankManager tank;
 
     [SerializeField]
-    private GameObject fuelSpawnArrow;
+    private SpriteRenderer fuelSpawnArrow;
+
     [SerializeField]
-    private GameObject fuelDropArrow;
+    private Spawner fuelSpawn;
+
     [SerializeField]
-    private GameObject ammoSpawnArrow;
+    private SpriteRenderer fuelDropArrow;
+
     [SerializeField]
-    private GameObject ammoDropArrow;
+    private Engine engine;
+
     [SerializeField]
-    private GameObject controlPanelArrow;
+    private SpriteRenderer ammoSpawnArrow;
+
+    [SerializeField]
+    private Spawner ammoSpawn;
+
+    [SerializeField]
+    private SpriteRenderer ammoDropArrow;
+
+    [SerializeField]
+    private Reload gun;
+
+    [SerializeField]
+    private SpriteRenderer controlPanelArrow;
+
+    [SerializeField]
+    private SwapModes controlPanel;
+
+    [SerializeField]
+    private TutorialSpawner spawner;
+
+    public bool rockSpawned= false;
 
 
     // Use this for initialization
@@ -29,23 +53,42 @@ public class TutorialManager : MonoBehaviour {
         tank.fuel = 0;
         frontText.text = "";
 
-        fuelSpawnArrow.SetActive(true);
+        controlPanelArrow.enabled = false;
+        ammoDropArrow.enabled = false;
+        ammoSpawnArrow.enabled = false;
+        fuelDropArrow.enabled = false;
+        fuelSpawnArrow.enabled = true;
 
 	}
 
     private void OnFirstFuelSpawned()
     {
-        fuelSpawnArrow.SetActive(false);
+        fuelSpawnArrow.enabled = false;
+        fuelDropArrow.enabled = true;
     }
 
     private void OnFirstFuelDestroyed()
     {
-        fuelDropArrow.SetActive(false);
+        fuelDropArrow.enabled = false;
+        ammoSpawnArrow.enabled = true;
     }
 
     private void OnFirstAmmoSpawned()
     {
-        ammoSpawnArrow.SetActive(false);
+        ammoSpawnArrow.enabled = false;
+        ammoDropArrow.enabled = true;
+    }
+
+    private void OnFirstAmmoDestroyed()
+    {
+        ammoDropArrow.enabled = false;
+        controlPanelArrow.enabled = true;
+    }
+
+    private void OnFirstControlPadTouch()
+    {
+        controlPanelArrow.enabled = false;
+        rockSpawned = true;
     }
 
     private void OnEnable()
@@ -53,24 +96,14 @@ public class TutorialManager : MonoBehaviour {
 
         Spawner.FirstFuelSpawned += OnFirstFuelSpawned;
 
-        if (fuelSpawnArrow.activeSelf == false)
-        {
-            Engine.FirstFuelDestroyed += OnFirstFuelDestroyed;
-        }
+        Engine.FirstFuelDestroyed += OnFirstFuelDestroyed;
 
-        if (fuelDropArrow.activeSelf == false)
-        {
-            Spawner.FirstAmmoSpawned += OnFirstAmmoSpawned;
-        }
-        if (true)
-        {
+        Spawner.FirstAmmoSpawned += OnFirstAmmoSpawned;
 
-        }
-        if (true)
-        {
+        Reload.FirstAmmoDestroyed += OnFirstAmmoDestroyed;
 
-        }
-
+        SwapModes.FirstControlContact += OnFirstControlPadTouch;
+        
     }
 
     private void OnDisable()
@@ -78,26 +111,30 @@ public class TutorialManager : MonoBehaviour {
 
         Spawner.FirstFuelSpawned -= OnFirstFuelSpawned;
 
-        if (fuelSpawnArrow.activeSelf == false)
-        {
-            fuelDropArrow.SetActive(true);
-        }
-        if (true)
-        {
+        Engine.FirstFuelDestroyed -= OnFirstFuelDestroyed;
 
-        }
-        if (true)
-        {
+        Spawner.FirstAmmoSpawned -= OnFirstAmmoSpawned;
 
-        }
-        if (true)
-        {
+        Reload.FirstAmmoDestroyed -= OnFirstAmmoDestroyed;
 
-        }
+        SwapModes.FirstControlContact -= OnFirstControlPadTouch;
+        
 
     }
     // Update is called once per frame
     void Update () {
-		
+
+        if (!rockSpawned && spawner.hasSpawned && GameObject.FindGameObjectsWithTag("Hostile").Length <= 0)
+        {
+            frontText.text = "Tutorial Complete";
+            StartCoroutine(TutorialEnd());
+        }
+
 	}
+
+    IEnumerator TutorialEnd()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Menu");
+    }
 }

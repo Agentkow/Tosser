@@ -59,6 +59,15 @@ public class Spawner : MonoBehaviour {
 
                 FirstFuelSpawn();
 
+                if (neverSpawnedAmmo)
+                {
+                    if (FirstAmmoSpawned!= null && throwable.name == "Ammo")
+                    {
+                        FirstAmmoSpawned.Invoke();
+                    }
+                    neverSpawnedAmmo = false;
+                }
+
                 hasSpawned = true;
             }
         }
