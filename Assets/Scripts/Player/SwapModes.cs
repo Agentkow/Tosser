@@ -48,10 +48,14 @@ public class SwapModes : MonoBehaviour {
     [SerializeField]
     private Image fuelLight;
 
+    private float interval = 1f;
+    private float startDelay = 0.5f;
+    private bool currentState = true;
+    private bool defaultState = true;
+    private bool isBlinking = false;
+
     public static event Action FirstControlContact;
-
-
-    float timeStamp = 0;
+    
     // Use this for initialization
     void Start () {
         fuelLight.enabled = false;
@@ -91,43 +95,18 @@ public class SwapModes : MonoBehaviour {
 
     private void TankFuelLightColor()
     {
-        //if (tank.fuel < 70)
-        //{
-        //    StartCoroutine(FuelLightOn());
-        //    StartCoroutine(FuelLightOff());
-        //}
-        //else
-        //{
-        //    fuelLight.color = Color.green;
-        //}
-
-
         if (tank.fuel < 70)
         {
-            Debug.Log("ActualTime" + Math.Abs(Time.time) + "Timestamp" + timeStamp);
-
-            if (Math.Abs(Time.time) == timeStamp + 2)
-            {
-                if (fuelLight.color == Color.green || fuelLight.color == Color.black)
-                    fuelLight.color = Color.red;
-                else
-                    fuelLight.color = Color.black;
-
-                timeStamp = Math.Abs(Time.time);
-            }
-
-
+            StartBlinking();
         }
         else
         {
-                fuelLight.color = Color.green;
-
-            timeStamp = Math.Abs(Time.time);
+            fuelLight.color = new Color(1, 1, 1, 1);
         }
 
     }
 
-        private void SwapControls()
+    private void SwapControls()
     {
         if (Input.GetButtonDown("Swap"))
         {
@@ -204,16 +183,28 @@ public class SwapModes : MonoBehaviour {
         }
     }
 
-    IEnumerator FuelLightOn()
+  
+    
+    void StartBlinking()
     {
-        yield return new WaitForSeconds(1);
-        fuelLight.color = Color.red;
+
+        if (isBlinking)
+        {
+            return;
+        }
+
+        if (fuelLight!=null)
+        {
+            isBlinking = true;
+            InvokeRepeating("ToggleStat", startDelay, interval);
+        }
+
+
     }
-    IEnumerator FuelLightOff()
+
+    void ToggleState()
     {
-        
-        yield return new WaitForSeconds(1);
-        fuelLight.color = Color.black;
+        fuelLight.enabled = !fuelLight.enabled;
     }
 
 }
