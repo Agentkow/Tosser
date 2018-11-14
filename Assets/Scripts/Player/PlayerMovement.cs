@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     private RaycastHit2D checkJump;
 
     private SpriteRenderer render;
+
+    public bool facingRight= true;
     // Use this for initialization
     void Start () {
 
@@ -37,9 +39,16 @@ public class PlayerMovement : MonoBehaviour {
         rigBody.velocity = new Vector2(move * moveSpeed, rigBody.velocity.y);
 
         if (move > 0 )
+        {
             render.flipX = false;
+            facingRight = true;
+        }
         else if (move < 0 )
+        {
             render.flipX = true;
+            facingRight = false;
+        }
+            
 
 
     }

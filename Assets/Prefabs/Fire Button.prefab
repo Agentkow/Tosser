@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720812789388328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.61, y: 5.05, z: 0}
+  m_LocalPosition: {x: 8.036, y: 4.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 1.33}
+  m_Size: {x: 3.28, y: 1.33}
   m_EdgeRadius: 0
 --- !u!82 &82357809502098044
 AudioSource:
@@ -78,11 +78,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 92c069a92ba03a24fb1a1a4b2ca5563f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -173,11 +173,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 221167a5789a5ec43b598726bef755c9, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -277,6 +277,10 @@ MonoBehaviour:
   ammoDisplay: {fileID: 0}
   ammoText: {fileID: 0}
   progressBar: {fileID: 0}
+  tankIn: {fileID: 82357809502098044}
+  tankOut: {fileID: 82597307315655756}
+  tankBody: {fileID: 0}
+  currentAudio: {fileID: 0}
   collided: 0
   fuelLight: {fileID: 0}
 --- !u!212 &212489626504872614

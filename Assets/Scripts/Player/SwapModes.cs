@@ -50,6 +50,8 @@ public class SwapModes : MonoBehaviour {
 
     public static event Action FirstControlContact;
 
+
+    float timeStamp = 0;
     // Use this for initialization
     void Start () {
         fuelLight.enabled = false;
@@ -69,6 +71,7 @@ public class SwapModes : MonoBehaviour {
     {
         SwapControls();
         
+
         progressBar.value = tank.progressInfo.value;
     }
 
@@ -88,17 +91,43 @@ public class SwapModes : MonoBehaviour {
 
     private void TankFuelLightColor()
     {
-        if (tank.fuel < 30)
+        //if (tank.fuel < 70)
+        //{
+        //    StartCoroutine(FuelLightOn());
+        //    StartCoroutine(FuelLightOff());
+        //}
+        //else
+        //{
+        //    fuelLight.color = Color.green;
+        //}
+
+
+        if (tank.fuel < 70)
         {
-            fuelLight.color = Color.red;
+            Debug.Log("ActualTime" + Math.Abs(Time.time) + "Timestamp" + timeStamp);
+
+            if (Math.Abs(Time.time) == timeStamp + 2)
+            {
+                if (fuelLight.color == Color.green || fuelLight.color == Color.black)
+                    fuelLight.color = Color.red;
+                else
+                    fuelLight.color = Color.black;
+
+                timeStamp = Math.Abs(Time.time);
+            }
+
+
         }
         else
         {
-            fuelLight.color = Color.green;
+                fuelLight.color = Color.green;
+
+            timeStamp = Math.Abs(Time.time);
         }
+
     }
 
-    private void SwapControls()
+        private void SwapControls()
     {
         if (Input.GetButtonDown("Swap"))
         {
@@ -173,6 +202,18 @@ public class SwapModes : MonoBehaviour {
         {
             collided = false;
         }
+    }
+
+    IEnumerator FuelLightOn()
+    {
+        yield return new WaitForSeconds(1);
+        fuelLight.color = Color.red;
+    }
+    IEnumerator FuelLightOff()
+    {
+        
+        yield return new WaitForSeconds(1);
+        fuelLight.color = Color.black;
     }
 
 }

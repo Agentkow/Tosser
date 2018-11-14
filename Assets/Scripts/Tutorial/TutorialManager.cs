@@ -135,6 +135,6 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator TutorialEnd()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Level");
     }
 }
