@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Bullet : MonoBehaviour {
 
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        CameraShaker.Instance.ShakeOnce(2f, 3f, 0.1f, 1f);
         explosion.transform.parent = null;
         explosion.Play();
         blastSound.Play();

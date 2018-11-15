@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using EZCameraShake;
 
 public class Engine : MonoBehaviour {
 
     [SerializeField]
     private TankManager tank;
-
-    [SerializeField]
-    private CameraShake camShake;
-
+    
     [SerializeField]
     private SwapModes swap;
 
@@ -32,6 +30,7 @@ public class Engine : MonoBehaviour {
             if (collision.gameObject.name == "Fuel(Clone)")
             {
                 tank.fuel += 100;
+                CameraShaker.Instance.StartShake(0.1f, 1f, 0.1f);
 
                 if (swap.currentAudio == swap.tankIn)
                 {
@@ -55,7 +54,7 @@ public class Engine : MonoBehaviour {
             }
             else
             {
-                camShake.Shake(0.2f, 0.3f);
+                CameraShaker.Instance.ShakeOnce(3f, 4f, 0.1f, 1f);
                 tank.health -= 5;
             }
             Destroy(collision.gameObject);

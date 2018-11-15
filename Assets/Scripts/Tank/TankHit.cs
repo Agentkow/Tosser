@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class TankHit : MonoBehaviour {
 
     [SerializeField]
     private TankManager tank;
-
-    [SerializeField]
-    private CameraShake camShake;
+    
 
     [SerializeField]
     private AudioSource hitSound;
@@ -18,8 +17,8 @@ public class TankHit : MonoBehaviour {
         if (collision.gameObject.tag == "Hostile")
         {
             tank.health -= 13;
-            camShake.Shake(0.3f, 0.4f);
             hitSound.Play();
+            CameraShaker.Instance.ShakeOnce(6f, 8f, 0.1f, 1f);
             collision.gameObject.SetActive(false);
         }
     }

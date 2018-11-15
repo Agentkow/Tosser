@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using EZCameraShake;
+using UnityEngine.SceneManagement;
 
 public class SwapModes : MonoBehaviour {
 
@@ -47,13 +49,11 @@ public class SwapModes : MonoBehaviour {
 
     [SerializeField]
     private Image fuelLight;
+    
+    [SerializeField]
+    private float timer = 1f;
 
-    private float interval = 1f;
-    private float startDelay = 0.5f;
-    private bool currentState = true;
-    private bool defaultState = true;
-    private bool isBlinking = false;
-
+    private Scene levelScene;
     public static event Action FirstControlContact;
     
     // Use this for initialization
@@ -61,6 +61,7 @@ public class SwapModes : MonoBehaviour {
         fuelLight.enabled = false;
         ammoDisplay.enabled = false;
         ammoText.enabled = false;
+        levelScene = SceneManager.GetActiveScene();
         progressBar.gameObject.SetActive(false);
         turrets = player.GetComponent<TurretControls>();
         grabbing = player.GetComponent<GrabAndThrow>();
@@ -68,6 +69,10 @@ public class SwapModes : MonoBehaviour {
         playerRigBody = player.GetComponent<Rigidbody2D>();
         currentAudio = tankIn;
         tankBody.enabled = false;
+        if (levelScene.name !="Tutorial")
+        {
+            CameraShaker.Instance.StartShake(0.1f, 1f, 0.1f);
+        }
         tankIn.Play();
     }
 
@@ -95,13 +100,29 @@ public class SwapModes : MonoBehaviour {
 
     private void TankFuelLightColor()
     {
-        if (tank.fuel < 70)
+        if (tank.fuel < 40)
         {
-            StartBlinking();
+            if (timer >= 0f)
+            {
+                timer -= 0.1f;
+            }
+            else
+            {
+                if (fuelLight.color != Color.red)
+                {
+                    fuelLight.color = Color.red;
+                }
+                else
+                {
+                    fuelLight.color = Color.black;
+                }
+                timer = 1f;
+            }
+
         }
         else
         {
-            fuelLight.color = new Color(1, 1, 1, 1);
+            fuelLight.color = Color.green;
         }
 
     }
@@ -125,10 +146,10 @@ public class SwapModes : MonoBehaviour {
                     playerRigBody.constraints = RigidbodyConstraints2D.None;
                     playerRigBody.constraints = RigidbodyConstraints2D.FreezeRotation;
                     currentAudio = tankIn;
-                    
                     tankBody.enabled = false;
                     if (tank.canMove)
                     {
+                        CameraShaker.Instance.StartShake(0.1f, 1f, 0.1f);
                         tankIn.Play();
                         tankOut.Stop();
                     }
@@ -145,7 +166,7 @@ public class SwapModes : MonoBehaviour {
                     progressBar.gameObject.SetActive(true);
                     currentAudio = tankOut;
                     playerRigBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-                    
+                    CameraShaker.Instance.StartShake(0f, 0f, 0f);
                     tankBody.enabled = true;
 
                     if (haventTouched)
@@ -185,26 +206,6 @@ public class SwapModes : MonoBehaviour {
 
   
     
-    void StartBlinking()
-    {
-
-        if (isBlinking)
-        {
-            return;
-        }
-
-        if (fuelLight!=null)
-        {
-            isBlinking = true;
-            InvokeRepeating("ToggleStat", startDelay, interval);
-        }
-
-
-    }
-
-    void ToggleState()
-    {
-        fuelLight.enabled = !fuelLight.enabled;
-    }
+   
 
 }

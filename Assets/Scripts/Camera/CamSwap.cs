@@ -7,10 +7,11 @@ public class CamSwap : MonoBehaviour {
 
     [SerializeField]
     private Camera mainCam;
+    [SerializeField]
+    private Transform position;
 
     private float inSize = 6f;
     private float outSize = 46f;
-
     private float outPosition = 53.7f;
 
     [SerializeField]
@@ -26,13 +27,11 @@ public class CamSwap : MonoBehaviour {
     private bool collideCheck;
     [SerializeField]
     private bool control = false;
-
-    private CameraShake camShake;
+    
 
     void Start()
     {
         camPos = mainCam.transform;
-        camShake = gameObject.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -47,15 +46,15 @@ public class CamSwap : MonoBehaviour {
                 if (control)
                 {
                     mainCam.orthographicSize = inSize;
+                    position.position = new Vector3(inPos.x,inPos.y,inPos.z);
                     camPos.position = camPos.position - new Vector3(outPosition, 0, 0);
-                    camShake.mainCamPos = camPos.position;
                     control = false;
                 }
                 else
                 {
                     mainCam.orthographicSize = outSize;
+                    position.position = new Vector3(outPos.x, outPos.y, outPos.z);
                     camPos.position = camPos.position + new Vector3(outPosition, 0, 0);
-                    camShake.mainCamPos = camPos.position;
                     control = true;
                 }
             }
