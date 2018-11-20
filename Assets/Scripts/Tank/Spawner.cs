@@ -31,6 +31,8 @@ public class Spawner : MonoBehaviour {
     private bool hasSpawned = false;
     private bool neverSpawnedFuel = true;
     private bool neverSpawnedAmmo = true;
+    private bool canSpawn = true;
+    private float timer = 10f;
 
     public bool pressed;
 
@@ -45,7 +47,21 @@ public class Spawner : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if (!canSpawn)
+        {
+            if (timer > 0)
+            {
+                timer -= 0.1f;
+            }
+            else
+            {
+                canSpawn = true;
+                timer = 10f;
+            }
+        }
+        
         SpawnThrowableItem();
+
     }
 
     private void SpawnThrowableItem()
@@ -54,21 +70,24 @@ public class Spawner : MonoBehaviour {
         {
             if (!hasSpawned)
             {
-                Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0, 0.3f, 0), spawnPoint.gameObject.transform.rotation);
-                dropSound.Play();
-
-                FirstFuelSpawn();
-
-                if (neverSpawnedAmmo)
+                if (canSpawn)
                 {
-                    if (FirstAmmoSpawned!= null && throwable.name == "Ammo")
-                    {
-                        FirstAmmoSpawned.Invoke();
-                    }
-                    neverSpawnedAmmo = false;
-                }
+                    Instantiate(throwable, spawnPoint.gameObject.transform.position - new Vector3(0, 0.3f, 0), spawnPoint.gameObject.transform.rotation);
+                    dropSound.Play();
 
-                hasSpawned = true;
+                    FirstFuelSpawn();
+
+                    if (neverSpawnedAmmo)
+                    {
+                        if (FirstAmmoSpawned != null && throwable.name == "Ammo")
+                        {
+                            FirstAmmoSpawned.Invoke();
+                        }
+                        neverSpawnedAmmo = false;
+                    }
+
+                    hasSpawned = true;
+                }
             }
         }
         else
