@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 64131755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 280, y: -35.4, z: 0}
+  m_LocalPosition: {x: 282, y: -35.4, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 1168155339}
@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 122085763}
   - component: {fileID: 122085765}
   - component: {fileID: 122085764}
+  - component: {fileID: 122085766}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -260,6 +261,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 122085762}
+--- !u!114 &122085766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122085762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f9ff3ff34a07f4ea52ddaee6551b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1155185164}
+  selectedObject: {fileID: 1104297441}
 --- !u!1 &155408159
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,10 +357,10 @@ GameObject:
   m_Component:
   - component: {fileID: 160736808}
   - component: {fileID: 160736813}
-  - component: {fileID: 160736812}
   - component: {fileID: 160736811}
   - component: {fileID: 160736810}
   - component: {fileID: 160736809}
+  - component: {fileID: 160736812}
   m_Layer: 8
   m_Name: Landscape (1)
   m_TagString: Untagged
@@ -436,12 +450,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 160736807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &160736813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -666,6 +679,7 @@ GameObject:
   - component: {fileID: 325384787}
   - component: {fileID: 325384789}
   - component: {fileID: 325384788}
+  - component: {fileID: 325384790}
   m_Layer: 5
   m_Name: Instructions Menu
   m_TagString: Untagged
@@ -727,6 +741,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 325384786}
+--- !u!114 &325384790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325384786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f9ff3ff34a07f4ea52ddaee6551b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1155185164}
+  selectedObject: {fileID: 1879258732}
 --- !u!1 &353290310
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,9 +837,9 @@ GameObject:
   m_Component:
   - component: {fileID: 414959876}
   - component: {fileID: 414959880}
-  - component: {fileID: 414959879}
   - component: {fileID: 414959878}
   - component: {fileID: 414959877}
+  - component: {fileID: 414959879}
   m_Layer: 8
   m_Name: Landscape (5)
   m_TagString: Untagged
@@ -886,12 +913,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 414959875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &414959880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1020,9 +1046,9 @@ GameObject:
   m_Component:
   - component: {fileID: 501010947}
   - component: {fileID: 501010951}
-  - component: {fileID: 501010950}
   - component: {fileID: 501010949}
   - component: {fileID: 501010948}
+  - component: {fileID: 501010950}
   m_Layer: 8
   m_Name: Landscape (4)
   m_TagString: Untagged
@@ -1096,12 +1122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 501010946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &501010951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1400,7 +1425,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1636,9 +1661,9 @@ GameObject:
   m_Component:
   - component: {fileID: 766839549}
   - component: {fileID: 766839553}
-  - component: {fileID: 766839552}
   - component: {fileID: 766839551}
   - component: {fileID: 766839550}
+  - component: {fileID: 766839552}
   m_Layer: 8
   m_Name: Landscape (7)
   m_TagString: Untagged
@@ -1712,12 +1737,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 766839548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &766839553
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1772,9 +1796,9 @@ GameObject:
   m_Component:
   - component: {fileID: 815858761}
   - component: {fileID: 815858765}
-  - component: {fileID: 815858764}
   - component: {fileID: 815858763}
   - component: {fileID: 815858762}
+  - component: {fileID: 815858764}
   m_Layer: 8
   m_Name: Landscape (9)
   m_TagString: Untagged
@@ -1848,12 +1872,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 815858760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &815858765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1908,9 +1931,9 @@ GameObject:
   m_Component:
   - component: {fileID: 882246372}
   - component: {fileID: 882246376}
-  - component: {fileID: 882246375}
   - component: {fileID: 882246374}
   - component: {fileID: 882246373}
+  - component: {fileID: 882246375}
   m_Layer: 8
   m_Name: Landscape (2)
   m_TagString: Untagged
@@ -1984,12 +2007,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 882246371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &882246376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2190,7 +2212,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.35289013, g: 0.8679245, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2383,7 +2405,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &1155185164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2395,7 +2417,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1104297441}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1155185165
@@ -2731,7 +2753,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -3073,7 +3095,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1756342051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -454, y: -35.4, z: 0}
+  m_LocalPosition: {x: -454.00006, y: -35.4, z: 0}
   m_LocalScale: {x: 99.555084, y: 99.55517, z: 99.55517}
   m_Children: []
   m_Father: {fileID: 1168155339}
@@ -3111,7 +3133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3122,7 +3144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.64}
+  m_Size: {x: 0.06, y: 0.64}
   m_EdgeRadius: 0
 --- !u!212 &1756342055
 SpriteRenderer:
@@ -3179,6 +3201,7 @@ GameObject:
   - component: {fileID: 1773884245}
   - component: {fileID: 1773884247}
   - component: {fileID: 1773884246}
+  - component: {fileID: 1773884248}
   m_Layer: 5
   m_Name: Credits Menu
   m_TagString: Untagged
@@ -3240,6 +3263,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1773884244}
+--- !u!114 &1773884248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773884244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f9ff3ff34a07f4ea52ddaee6551b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1155185164}
+  selectedObject: {fileID: 2083077005}
 --- !u!1 &1823093071
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,9 +3285,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1823093072}
   - component: {fileID: 1823093076}
-  - component: {fileID: 1823093075}
   - component: {fileID: 1823093074}
   - component: {fileID: 1823093073}
+  - component: {fileID: 1823093075}
   m_Layer: 8
   m_Name: Landscape
   m_TagString: Untagged
@@ -3325,12 +3361,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823093071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &1823093076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3385,10 +3420,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1833130872}
   - component: {fileID: 1833130877}
-  - component: {fileID: 1833130876}
   - component: {fileID: 1833130875}
   - component: {fileID: 1833130874}
   - component: {fileID: 1833130873}
+  - component: {fileID: 1833130876}
   m_Layer: 8
   m_Name: Landscape (8)
   m_TagString: Untagged
@@ -3478,12 +3513,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833130871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &1833130877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3586,7 +3620,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -3747,10 +3781,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1867820926}
   - component: {fileID: 1867820931}
-  - component: {fileID: 1867820930}
   - component: {fileID: 1867820929}
   - component: {fileID: 1867820928}
   - component: {fileID: 1867820927}
+  - component: {fileID: 1867820930}
   m_Layer: 8
   m_Name: Landscape (6)
   m_TagString: Untagged
@@ -3840,12 +3874,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867820925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &1867820931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3948,7 +3981,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4306,7 +4339,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4520,7 +4553,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.3529412, g: 0.8666667, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4605,9 +4638,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2129880328}
   - component: {fileID: 2129880332}
-  - component: {fileID: 2129880331}
   - component: {fileID: 2129880330}
   - component: {fileID: 2129880329}
+  - component: {fileID: 2129880331}
   m_Layer: 8
   m_Name: Landscape (3)
   m_TagString: Untagged
@@ -4681,12 +4714,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2129880327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da48c5f3d1b1e0948a1ce35a1a2c38fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e242766a8180304089c8b68c7bf2444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   spawnPoint: {fileID: 64131756}
-  tank: {fileID: 0}
 --- !u!212 &2129880332
 SpriteRenderer:
   m_ObjectHideFlags: 0

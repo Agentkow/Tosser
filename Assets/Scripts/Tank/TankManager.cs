@@ -35,7 +35,7 @@ public class TankManager : MonoBehaviour {
     private float maxFuel = 100;
 
     public float health = 100;
-    private float fuelDropSpeed = 0.05f;
+    private float fuelDropSpeed = 0.03f;
     public float progressSpeed = 0.1f;
 
     public bool fullAmmo = false;

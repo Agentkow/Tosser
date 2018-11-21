@@ -55,15 +55,16 @@ public class TurretControls : MonoBehaviour {
             rotateZ = maxRotate;
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W))
-        {
-            rotateZ += Time.deltaTime * rotateForce;
-        }
+        rotateZ += Time.deltaTime * rotateForce * Input.GetAxis("TurretAim");
+        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W))
+        //{
+        //    rotateZ += Time.deltaTime * rotateForce;
+        //}
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
-        {
-            rotateZ += Time.deltaTime * -rotateForce;
-        }
+        //if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        //{
+        //    rotateZ += Time.deltaTime * -rotateForce;
+        //}
 
         rotateZ = Mathf.Clamp(rotateZ, maxRotate, minRotate);
         turret.transform.rotation = Quaternion.Euler(0, 0, rotateZ);
