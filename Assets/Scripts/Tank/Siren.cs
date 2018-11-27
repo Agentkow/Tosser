@@ -17,7 +17,7 @@ public class Siren : MonoBehaviour {
         sirenSound = gameObject.GetComponent<AudioSource>();
 	}
 
-    void FixedUpdate()
+    void Update()
     {
         if (GameObject.FindGameObjectsWithTag("Hostile").Length <= 0)
         {

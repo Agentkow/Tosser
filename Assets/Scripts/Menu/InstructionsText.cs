@@ -6,24 +6,27 @@ using UnityEngine.UI;
 public class InstructionsText : MonoBehaviour {
 
     [SerializeField]
-    private Text instructions;
+    private Text instructionsPC;
+    [SerializeField]
+    private Text instructionsGamePad;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Awake () {
+        instructionsGamePad.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        string[] name = Input.GetJoystickNames();
-        if (true)
-        {
 
-        }
-        else
+        if (Input.GetAxisRaw("Horizontal") >0)
         {
-            instructions.text = "In Tank: Movement - A & D / Left & Right Arrow " +
-                "Grab / Throw Objects - Left Mouse Jump - Space Interact with controls - E On Cannon: Raise / Lower Cannon - A & D / Left & Right Arrow Fire Cannon - Left Mouse Leave Controls - E";
+            instructionsPC.enabled = true;
+            instructionsGamePad.enabled = false;
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            instructionsPC.enabled = false;
+            instructionsGamePad.enabled = true;
         }
 	}
 }
