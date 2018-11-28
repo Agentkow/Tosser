@@ -12,15 +12,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Text endMission;
     
-
     public bool cleared = false;
 
     // Use this for initialization
     void Start () {
         
         StartCoroutine(ClearScreen());
+        
     }
-	
+    
 	// Update is called once per frame
 	void Update () {
 

@@ -19,10 +19,12 @@ public class Missile : MonoBehaviour {
     private float missileHealth = 10f;
 
     private Rigidbody2D rigBody;
+    private SpriteRenderer missileSprite;
 
     void Start()
     {
         rigBody = GetComponent<Rigidbody2D>();
+        missileSprite = GetComponent<SpriteRenderer>();
         explosion.Stop();
     }
 
@@ -30,6 +32,11 @@ public class Missile : MonoBehaviour {
     {
         RotatingMissile();
         TankTargeting();
+
+        if (missileHealth <= 5)
+        {
+            missileSprite.color = Color.grey;
+        }
 
         if (missileHealth <= 0)
         {

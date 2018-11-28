@@ -54,7 +54,7 @@ public class Engine : MonoBehaviour {
             }
             else
             {
-                CameraShaker.Instance.ShakeOnce(3f, 4f, 0.1f, 1f);
+                CameraShaker.Instance.ShakeOnce(4f, 6f, 0.1f, 1f);
                 tank.health -= 5;
             }
             Destroy(collision.gameObject);
