@@ -10,23 +10,26 @@ public class InstructionsText : MonoBehaviour {
     [SerializeField]
     private Text instructionsGamePad;
 
+    private float axisNum;
+
     // Use this for initialization
     void Awake () {
         instructionsGamePad.enabled = false;
+        axisNum = Input.GetJoystickNames()[0].Length;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetAxisRaw("Horizontal") >0)
-        {
-            instructionsPC.enabled = true;
-            instructionsGamePad.enabled = false;
-        }
-        if (Input.GetAxisRaw("Horizontal") < 0)
+        
+        if (axisNum == 33)
         {
             instructionsPC.enabled = false;
             instructionsGamePad.enabled = true;
+        }
+        else
+        {
+            instructionsPC.enabled = true;
+            instructionsGamePad.enabled = false;
         }
 	}
 }

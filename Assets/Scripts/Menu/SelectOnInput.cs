@@ -15,6 +15,8 @@ public class SelectOnInput : MonoBehaviour {
 
     [SerializeField]
     private AudioSource menuClick;
+
+
     
 	// Use this for initialization
 	void Start () {
@@ -23,10 +25,7 @@ public class SelectOnInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetAxisRaw("Vertical")!=0)
-        {
-            menuClick.Play();
-        }
+        
 		if(Input.GetAxisRaw("Vertical") != 0 && !buttonSelected)
         {
             eventSystem.SetSelectedGameObject(selectedObject);
@@ -34,6 +33,11 @@ public class SelectOnInput : MonoBehaviour {
             
         }
 	}
+
+    private void OnEnable()
+    {
+        menuClick.Play();
+    }
 
     private void OnDisable()
     {
