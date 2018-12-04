@@ -130,6 +130,11 @@ public class TutorialManager : MonoBehaviour {
             StartCoroutine(TutorialEnd());
         }
 
+        if (Input.GetButtonDown("Submit"))
+        {
+            SceneManager.LoadScene("Level");
+        }
+
 	}
 
     IEnumerator TutorialEnd()

@@ -30,15 +30,31 @@ public class GrabAndThrow : MonoBehaviour {
     [SerializeField]
     public float angle;
 
+    private bool faceRight;
+
     void Start()
     {
         //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update () {
-        
+    void Update ()
+    {
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            faceRight = true;
+        }
+        else if ((Input.GetAxis("Horizontal") < 0))
+        {
+            faceRight = false;
+        }
 
+        GrabAndThrowing();
+
+    }
+
+    private void GrabAndThrowing()
+    {
         if (Input.GetButtonDown("Fire1"))
         {
             if (!grabbed)
@@ -47,25 +63,32 @@ public class GrabAndThrow : MonoBehaviour {
 
                 Physics2D.queriesStartInColliders = false;
 
-               hit = Physics2D.OverlapCircle(grabPosition.position, distance, items);
-               
-                if (hit!=null && hit.tag == "GrabObject")
+                hit = Physics2D.OverlapCircle(grabPosition.position, distance, items);
+
+                if (hit != null && hit.tag == "GrabObject")
                 {
                     grabbed = true;
                 }
 
             }
             else if (!Physics2D.OverlapPoint(holdPoint.position, notGrabbed))
-            { 
+            {
 
                 //throw
 
                 grabbed = false;
 
-                if (hit.gameObject.GetComponent<Rigidbody2D>()!=null)
+                if (hit.gameObject.GetComponent<Rigidbody2D>() != null)
                 {
-                    hit.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, angle)*throwForce;
-                    
+                    if (!faceRight)
+                    {
+                        hit.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, -angle) * -throwForce;
+                    }
+                    else if (faceRight)
+                    {
+                        hit.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, angle) * throwForce;
+                    }
+
                 }
             }
         }
@@ -75,8 +98,7 @@ public class GrabAndThrow : MonoBehaviour {
         {
             hit.gameObject.transform.position = holdPoint.position;
         }
-
-	}
+    }
 
     void OnDrawGizmos()
     {
