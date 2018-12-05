@@ -14,8 +14,11 @@ public class TutoralPrompt : MonoBehaviour {
     void Start () {
         animate = GetComponent<Animator>();
 
-        
-       axisNum = Input.GetJoystickNames()[0].Length;
+        if (Input.GetJoystickNames()!=null)
+        {
+            axisNum = Input.GetJoystickNames()[0].Length;
+        }
+       
         
     }
 	

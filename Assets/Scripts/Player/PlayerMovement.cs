@@ -24,7 +24,8 @@ public class PlayerMovement : MonoBehaviour {
     public bool facingRight= true;
     // Use this for initialization
     void Start () {
-        hadJumped = true;
+
+        hadJumped = false;
         rigBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
@@ -60,16 +61,22 @@ public class PlayerMovement : MonoBehaviour {
         checkJump = Physics2D.Raycast(transform.position,transform.TransformDirection(Vector2.down),rayLength);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.down), Color.green, rayLength, false);
         
-
-        if (Input.GetButtonDown("Jump") && hadJumped)
+        if (Input.GetButtonDown("Jump") && !hadJumped)
         {
+
             rigBody.AddForce(new Vector2(0, jumpHeight));
-            hadJumped = false;
+
         }
 
         if (checkJump.collider != null)
         {
+            hadJumped = false;
+        }
+        else if (checkJump.collider == null)
+        {
+
             hadJumped = true;
+
         }
 
     }
