@@ -14,7 +14,9 @@ public class TutoralPrompt : MonoBehaviour {
     void Start () {
         animate = GetComponent<Animator>();
 
-        axisNum = Input.GetJoystickNames()[0].Length;
+        
+       axisNum = Input.GetJoystickNames()[0].Length;
+        
     }
 	
 	// Update is called once per frame

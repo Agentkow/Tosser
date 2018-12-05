@@ -4553,6 +4553,7 @@ GameObject:
   - component: {fileID: 583892946}
   - component: {fileID: 583892945}
   - component: {fileID: 583892944}
+  - component: {fileID: 583892947}
   m_Layer: 0
   m_Name: Tank Walls Tilemap
   m_TagString: Ground
@@ -5493,6 +5494,26 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &583892947
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 583892942}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &593258404
 GameObject:
   m_ObjectHideFlags: 0
